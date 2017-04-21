@@ -4,7 +4,7 @@
   "description": "Pokemon Map Builder Online and Recursive",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node app.js"
   },
   "repository": {
     "type": "git",
