@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/newDb');
+mongoose.connect('mongodb://heroku_2qbdph92:s7dh5sesuodh0nrvjtivjb91o6@ds115071.mlab.com:15071/heroku_2qbdph92');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
