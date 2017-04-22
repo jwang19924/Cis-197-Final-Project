@@ -79,6 +79,14 @@ app.get('/index', function (req, res) {
   }
 });
 
+app.get('/usermaps', function (req, res) {
+  if (!req.session.username || req.session.username === '') {
+    res.send('You tried to access a protected page');
+  } else {
+    res.render('usermaps');
+  }
+});
+
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function() { 
