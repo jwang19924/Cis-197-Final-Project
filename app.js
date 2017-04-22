@@ -15,11 +15,11 @@ app.use(cookieSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
-    res.redirect('/login');
+    res.redirect('/protected');
   } else {
     res.redirect('/login');
   }
