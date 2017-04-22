@@ -69,6 +69,10 @@ app.get('/protected', function(req, res) {
   }
 });
 
+app.get('/index', function (req, res) {
+  res.render('index');
+});
+
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function() { 
