@@ -15,8 +15,6 @@ app.use(cookieSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/', express.static('views'))
-
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
     res.redirect('/protected');
@@ -24,6 +22,8 @@ app.get('/', function (req, res) {
     res.redirect('/login');
   }
 });
+
+app.use('/', express.static('views'))
 
 app.get('/login', function (req, res) {
   res.render('login');
