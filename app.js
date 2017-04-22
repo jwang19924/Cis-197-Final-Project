@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
-    res.redirect('/protected');
+    res.redirect('/login');
   } else {
     res.redirect('/login');
   }
