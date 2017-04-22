@@ -16,21 +16,6 @@ app.use(cookieSession({
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-
-
-// define the folder that will be used for static assets
-app.use(Express.static(path.join(__dirname, '../public')));
-
-// handle every other route with index.html, which will contain
-// a script tag to your application's JavaScript file(s).
-app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname, '../public', 'index.html'));
-});
-
-
-
-
-
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
     res.redirect('/protected');
