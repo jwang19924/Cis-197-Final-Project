@@ -15,7 +15,7 @@ app.use(cookieSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/', express.static('public'))
+app.use('/', express.static('views'))
 
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
