@@ -72,7 +72,11 @@ app.get('/protected', function(req, res) {
 });
 
 app.get('/index', function (req, res) {
-  res.render('index');
+  if (!req.session.username || req.session.username === '') {
+    res.send('You tried to access a protected page');
+  } else {
+    res.render('index');
+  }
 });
 
 app.set('port', process.env.PORT || 3000);
