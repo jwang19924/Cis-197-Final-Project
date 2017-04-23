@@ -16,6 +16,8 @@ app.use(cookieSession({
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use('jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
 app.get('/', function (req, res) {
   if (req.session.username && req.session.username !== '') {
     res.redirect('/protected');
