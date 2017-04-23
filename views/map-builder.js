@@ -8,6 +8,7 @@ var current = 'grass';
 var tile = '';
 var repaint = false;
 var mousedown = false;
+var current_map = [];
 
 var MapBuilder = function ($container, params) {
   // TODO: Initialize MapBuilder parameters
@@ -42,8 +43,15 @@ MapBuilder.prototype.setupMapCanvas = function () {
   for (var i = 0; i < this.height; i++) {
     $('.map').append($('<div class = "row"> </div>'));
   }
-  for (var j = 0; j < this.width; j++) {
-    $('.row').append($('<div class = "tile swatch grass"> </div>'));
+  var rowlist = document.getElementsByClassName("row");
+  for (var i = 0; i < rowlist.length; i++) {
+    for (var j = 0; j < this.width; j++) {
+      $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+    }
+  }
+
+  var updateMap = function () {
+    var list = $('.map').classList;
   }
 
   $('.tile').mouseenter(function () {
@@ -75,6 +83,14 @@ MapBuilder.prototype.setupMapCanvas = function () {
 
   $('.tile').mouseup(function () {
     mousedown = false;
+  });
+
+  $('.save').mouseup(function () {
+    var list = document.getElementsByClassName("tile");
+    for (var i = 0; i < list.length; i++) {
+      current_map[i] = list[i];
+    }
+    console.log(current_map);
   });
 
 }
