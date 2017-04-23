@@ -7,9 +7,21 @@ var mapSchema = new Schema({
   mapdata: { type: [], required: true }
 });
 
-mapSchema.statics.addMap = function(mapname, mapData, cb) {
+mapSchema.statics.addMap = function(mapname, mapdata, cb) {
   var newMap = new this({ mapname: mapname, mapdata: mapdata});
   newMap.save(cb);
+}
+
+mapSchema.statics.rewriteMap = function(mapname, mapdata, cd) {
+  this.findOne({ mapname: mapname }, function(err, map) {
+    if (!map) cb('no user');
+    else {
+      map.mapdata = mapdata;
+      map.save(function(err) {
+        if (err) { return next(err); }
+      });
+    };
+  });
 }
 
 module.exports = mongoose.model('Maps', mapSchema);

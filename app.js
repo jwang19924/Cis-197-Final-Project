@@ -5,6 +5,7 @@ var app = express();
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var User = require('./user');
+var Maps = require('./maps');
 
 app.engine('html', require('ejs').__express);
 app.set('view engine', 'html');
@@ -82,6 +83,7 @@ app.get('/protected/:className/index', function (req, res) {
 app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
   var array = mapstring.split("|");
+  Maps.addMap(className, array);
   res.send(array);
 });
 
