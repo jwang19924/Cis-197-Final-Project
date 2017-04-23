@@ -40,15 +40,15 @@ MapBuilder.prototype.setupPalette = function () {
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
   // draws a 15x30 map of grass onto the canvas
-  for (var i = 0; i < this.height; i++) {
-    $('.map').append($('<div class = "row"> </div>'));
-  }
-  var rowlist = document.getElementsByClassName("row");
-  for (var i = 0; i < rowlist.length; i++) {
-    for (var j = 0; j < this.width; j++) {
-      $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
-    }
-  }
+  // for (var i = 0; i < this.height; i++) {
+  //   $('.map').append($('<div class = "row"> </div>'));
+  // }
+  // var rowlist = document.getElementsByClassName("row");
+  // for (var i = 0; i < rowlist.length; i++) {
+  //   for (var j = 0; j < this.width; j++) {
+  //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+  //   }
+  // }
 
   var updateMap = function () {
     var list = $('.map').classList;
