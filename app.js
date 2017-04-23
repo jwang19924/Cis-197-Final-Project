@@ -81,6 +81,7 @@ app.get('/protected/:className/index', function (req, res) {
 
 app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
+  var array = mapstring.split("|");
   res.send(mapstring);
 });
 
