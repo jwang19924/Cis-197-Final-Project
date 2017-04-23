@@ -83,11 +83,11 @@ app.get('/protected/:className/index', function (req, res) {
 app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
   var array = mapstring.split("|");
-  Maps.addMap(className, array, function(err) {
+  Maps.addMap(req.params.className, array, function(err) {
     if (!err) res.send('Saved new map!');
     else {
       // map already exits 
-      Maps.rewriteMap(className, array, function(err) {
+      Maps.rewriteMap(req.params.className, array, function(err) {
         if (err) res.send('error' + err);
         else res.send('saved map');
       });
