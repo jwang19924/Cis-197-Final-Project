@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 var userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true }
-  mapnames: { type: [], required: false}
+  mapnames: { type: []}
 });
 
 userSchema.pre('save', function(next) {
@@ -26,12 +26,12 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.statics.addUser = function(username, password, cb) {
-  var newUser = new this({ username: username, password: password});
+userSchema.statics.addUser = function(username, password, mapnames, cb) {
+  var newUser = new this({ username: username, password: password, mapnames: mapnames});
   newUser.save(cb);
 }
 
-userSchema.statics.checkIfLegit = function(username, password, cb) {
+userSchema.statics.checkIfLegit = function(username, password, mapnames, cb) {
   this.findOne({ username: username }, function(err, user) {
     if (!user) cb('no user');
     else {

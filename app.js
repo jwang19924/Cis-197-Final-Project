@@ -32,7 +32,7 @@ app.get('/login', function (req, res) {
 app.post('/login', function(req, res) {
   username = req.body.username;
   password = req.body.password;
-  User.checkIfLegit(username, password, function(err, isRight) {
+  User.checkIfLegit(username, password, null, function(err, isRight) {
     if (err) {
       res.send('Error! ' + err);
     } else {
@@ -52,7 +52,7 @@ app.get('/register', function (req, res) {
 });
 
 app.post('/register', function(req, res) {
-  User.addUser(req.body.username, req.body.password, function(err) {
+  User.addUser(req.body.username, req.body.password, [], function(err) {
     if (err) res.send('error' + err);
     else res.send('new user registered with username ' + req.body.username);
   });
