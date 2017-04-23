@@ -5,8 +5,8 @@ var bcrypt = require('bcrypt');
 
 var userSchema = new Schema({
   username: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-  mapnames: { type: []}
+  password: { type: String, required: true },
+  mapnames: []
 });
 
 userSchema.pre('save', function(next) {
