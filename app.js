@@ -89,7 +89,7 @@ app.get('/index', function (req, res) {
 
 app.post('/index', function (req, res) {
   var mapstring = req.body.mapstring;
-  console.log(mapstring);
+  res.send(mapstring);
 });
 
 app.set('port', process.env.PORT || 3000);
