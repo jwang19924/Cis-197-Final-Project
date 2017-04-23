@@ -78,7 +78,7 @@ app.get('/protected/:className/index', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
   } else {
-    res.render('index', {data : $('<div class = "row"> <div class = "tile swatch grass"> </div> </div>')});
+    res.render('index', {data : '<div class = "row"> <div class = "tile swatch grass"> </div> </div>'});
   }
 });
 
