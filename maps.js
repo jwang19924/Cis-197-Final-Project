@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_2qbdph92:s7dh5sesuodh0nrvjtivjb91o6@ds115071.mlab.com:15071/heroku_2qbdph92');
+mongoose.createConnection('mongodb://heroku_2qbdph92:s7dh5sesuodh0nrvjtivjb91o6@ds115071.mlab.com:15071/heroku_2qbdph92');
 var Schema = mongoose.Schema;
 
 var mapSchema = new Schema({
@@ -12,9 +12,9 @@ mapSchema.statics.addMap = function(mapname, mapdata, cb) {
   newMap.save(cb);
 }
 
-mapSchema.statics.rewriteMap = function(mapname, mapdata, cd) {
+mapSchema.statics.rewriteMap = function(mapname, mapdata, cb) {
   this.findOne({ mapname: mapname }, function(err, map) {
-    if (!map) cb('no user');
+    if (!map) cb('no map');
     else {
       map.mapdata = mapdata;
       map.save(function(err) {
