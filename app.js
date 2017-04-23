@@ -71,6 +71,14 @@ app.get('/protected', function(req, res) {
   }
 });
 
+app.get('/usermaps', function (req, res) {
+  if (!req.session.username || req.session.username === '') {
+    res.send('You tried to access a protected page');
+  } else {
+    res.render('usermaps');
+  }
+});
+
 app.get('/index', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
@@ -79,12 +87,9 @@ app.get('/index', function (req, res) {
   }
 });
 
-app.get('/usermaps', function (req, res) {
-  if (!req.session.username || req.session.username === '') {
-    res.send('You tried to access a protected page');
-  } else {
-    res.render('usermaps');
-  }
+app.post('/index', function (req, res) {
+  var mapstring = req.body.mapstring;
+  console.log(mapstring);
 });
 
 app.set('port', process.env.PORT || 3000);

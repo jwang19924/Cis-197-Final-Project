@@ -87,10 +87,15 @@ MapBuilder.prototype.setupMapCanvas = function () {
 
   $('.save').mouseup(function () {
     var list = document.getElementsByClassName("tile");
+    var string = "";
     for (var i = 0; i < list.length; i++) {
-      current_map[i] = list[i];
+      current_map[i] = list[i].classList[2];
+      var holder = list[i].classList[2];
+      string = string.concat(holder);
+      string = string.concat("|");
     }
-    console.log(current_map);
+    console.log(string); 
+    document.getElementById("mapfield").value = string;
   });
 
 }
