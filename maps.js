@@ -30,7 +30,7 @@ mapSchema.statics.getMap = function(mapname, cb) {
       cb("no map data" + mapname); 
     }
     if (map) {
-      cb(null, map.mapData);
+      cb(null, map.mapdata);
     }
   });
 }
