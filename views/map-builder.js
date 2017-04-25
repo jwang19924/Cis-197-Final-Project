@@ -16,6 +16,7 @@ var drawMapAjax = function () {
     url: '/protected/:className/index',
     data: { mapstring : null },
     success: function(data) {
+      $('.map').empty();
       if (data) {
         var x = 0;
         for (var i = 0; i < 15; i++) {
@@ -74,6 +75,15 @@ MapBuilder.prototype.setupPalette = function () {
 
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
+  // for (var i = 0; i < 15; i++) {
+  //   $('.map').append($('<div class = "row"> </div>'));
+  // }
+  // var rowlist = document.getElementsByClassName("row");
+  // for (var i = 0; i < rowlist.length; i++) {
+  //   for (var j = 0; j < 30; j++) {
+  //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+  //   }
+  // }
   drawMapAjax();
 
   var updateMap = function () {
