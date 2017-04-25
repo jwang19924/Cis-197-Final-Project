@@ -17,7 +17,8 @@ var drawMapAjax = function () {
     url: '/getmapdata',
     data: { mapstring : null },
     success: function(data) {
-        $('.map').clear();
+      $('.map').empty();
+      console.log(data);
       if (data) {
         var x = 0;
         for (var i = 0; i < 15; i++) {
