@@ -74,6 +74,10 @@ app.get('/protected', function(req, res) {
   }
 });
 
+app.post('/protected', function(req, res) {
+  app.redirect('index', { username: req.body.friendname});
+});
+
 app.get('/protected/:className/index', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
@@ -106,8 +110,6 @@ app.post('/protected/:className/index', function (req, res) {
     });
   }
 });
-
-
 
 app.set('port', process.env.PORT || 3000);
 
