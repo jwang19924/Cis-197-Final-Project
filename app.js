@@ -87,21 +87,23 @@ app.post('/protected/:className/index', function (req, res) {
 
   if (!mapstring) {
     Maps.getMap(req.body.className, function (err, mapdata) {
+      console.log('mapdata: '+ mapdata);
       res.send(mapdata);
     });
+  } else {
+    var array = mapstring.split("|");
+    Maps.addMap(req.params.className, array, function(err) {
+      if (err) {
+        // map already exits 
+        Maps.rewriteMap(req.params.className, array, function(err) {
+          if (err) {
+            next(err);
+          }
+        });
+      }
+    });
+    res.send('Map has been saved!');
   }
-
-  // var array = mapstring.split("|");
-  // Maps.addMap(req.params.className, array, function(err) {
-  //   if (err) {
-  //     // map already exits 
-  //     Maps.rewriteMap(req.params.className, array, function(err) {
-  //       if (err) {
-  //         next(err);
-  //       }
-  //     });
-  //   }
-  // });
 });
 
 app.set('port', process.env.PORT || 3000);

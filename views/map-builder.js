@@ -14,7 +14,7 @@ function drawMapAjax() {
   $.ajax({
     type: 'POST',
     url: '/protected/:className/index',
-    data: { },
+    data: { mapstring : null },
     success: function(data) {
       if (data) {
         var x = 0;
