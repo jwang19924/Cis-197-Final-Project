@@ -26,6 +26,7 @@ mapSchema.statics.rewriteMap = function(mapname, mapdata, cb) {
 
 mapSchema.statics.getMap = function(mapname, cb) {
   this.findOne(({ mapname: mapname }), function (err, map) {
+    console.log('map data: '+ map.mapdata);
     return cb(map.mapdata);
   });
 }

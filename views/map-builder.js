@@ -28,6 +28,7 @@ function drawMapAjax() {
             x = x + 1;
           }
         }
+        console.log('map from database');
       } else {
         for (var i = 0; i < 15; i++) {
           $('.map').append($('<div class = "row"> </div>'));
@@ -38,8 +39,8 @@ function drawMapAjax() {
             $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
           }
         }
-      }
-      console.log("made map from database if it exsits");     
+        console.log('base map');
+      }    
     }
   });
 }

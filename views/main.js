@@ -8,5 +8,4 @@ $(document).ready(function () {
   builder.setupPalette();
   builder.setupMapCanvas();
   var pikachu = new Player(0, 0, builder);
-
 });
