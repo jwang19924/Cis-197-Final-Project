@@ -99,7 +99,7 @@ app.post('/protected/:className/index', function (req, res) {
     });
     res.send('Map has been saved!');
   } else {
-    Maps.getMap(req.body.className, function (err, mapdata) {
+    Maps.getMap(req.params.className, function (err, mapdata) {
       console.log(err);
       res.send(mapdata);
     });
