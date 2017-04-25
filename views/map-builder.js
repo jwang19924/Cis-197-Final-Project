@@ -10,6 +10,72 @@ var repaint = false;
 var mousedown = false;
 var current_map = [];
 
+var drawMapAjax = function () {
+  $.ajax({
+    type: 'POST',
+    url: '/getmapda',
+    data: { mapstring : null },
+    success: function(data) {
+      if (data) {
+        var x = 0;
+        for (var i = 0; i < 15; i++) {
+          $('.map').append($('<div class = "row"> </div>'));
+        }
+        var rowlist = document.getElementsByClassName("row");
+        for (var i = 0; i < rowlist.length; i++) {
+          for (var j = 0; j < 30; j++) {
+            $(rowlist[i]).append($('<div class = "tile swatch ' + data[x] + '"> </div>'));
+            x = x + 1;
+          }
+        }
+        console.log('map from database');
+      } else {
+        for (var i = 0; i < 15; i++) {
+          $('.map').append($('<div class = "row"> </div>'));
+        }
+        var rowlist = document.getElementsByClassName("row");
+        for (var i = 0; i < rowlist.length; i++) {
+          for (var j = 0; j < 30; j++) {
+            $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+          }
+        }
+        console.log('base map');
+      }
+
+      $('.tile').mouseenter(function () {
+        var list = (this).classList;
+        tile = list[2];
+        $(this).removeClass(list[2]);
+        $(this).addClass('tile ' + current);
+        repaint = true;
+        if (mousedown) {
+          repaint = false;
+        }
+      });
+
+      $('.tile').mouseout(function () {
+        if (repaint) {
+          var list = (this).classList;
+          $(this).removeClass(list[2]);
+          $(this).addClass('tile ' + tile);
+        }
+      });
+
+      $('.tile').mousedown(function () {
+        var list = (this).classList;
+        $(this).removeClass(list[2]);
+        $(this).addClass('tile ' + current);
+        repaint = false;
+        mousedown = true;
+      });
+
+      $('.tile').mouseup(function () {
+        mousedown = false;
+      });
+
+    }
+  });
+}
 
 var MapBuilder = function ($container, params) {
   // TODO: Initialize MapBuilder parameters
@@ -40,19 +106,16 @@ MapBuilder.prototype.setupPalette = function () {
 
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
-  for (var i = 0; i < 15; i++) {
-    $('.map').append($('<div class = "row"> </div>'));
-  }
-  var rowlist = document.getElementsByClassName("row");
-  for (var i = 0; i < rowlist.length; i++) {
-    for (var j = 0; j < 30; j++) {
-      $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
-    }
-  }
-
-  var updateMap = function () {
-    var list = $('.map').classList;
-  }
+  // for (var i = 0; i < 15; i++) {
+  //   $('.map').append($('<div class = "row"> </div>'));
+  // }
+  // var rowlist = document.getElementsByClassName("row");
+  // for (var i = 0; i < rowlist.length; i++) {
+  //   for (var j = 0; j < 30; j++) {
+  //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+  //   }
+  // }
+  drawMapAjax();
 
   $('.tile').mouseenter(function () {
     var list = (this).classList;
@@ -99,7 +162,4 @@ MapBuilder.prototype.setupMapCanvas = function () {
   });
 
 }
-
-
-
 //
