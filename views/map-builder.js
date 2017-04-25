@@ -10,6 +10,40 @@ var repaint = false;
 var mousedown = false;
 var current_map = [];
 
+function drawMapAjax() {
+  $.ajax({
+    type: 'POST',
+    url: '/protected/:className/index',
+    data: { },
+    success: function(data) {
+      if (data) {
+        var x = 0;
+        for (var i = 0; i < 15; i++) {
+          $('.map').append($('<div class = "row"> </div>'));
+        }
+        var rowlist = document.getElementsByClassName("row");
+        for (var i = 0; i < rowlist.length; i++) {
+          for (var j = 0; j < 30; j++) {
+            $(rowlist[i]).append($('<div class = "tile swatch ' + data[x] + '"> </div>'));
+            x = x + 1;
+          }
+        }
+      } else {
+        for (var i = 0; i < 15; i++) {
+          $('.map').append($('<div class = "row"> </div>'));
+        }
+        var rowlist = document.getElementsByClassName("row");
+        for (var i = 0; i < rowlist.length; i++) {
+          for (var j = 0; j < 30; j++) {
+            $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+          }
+        }
+      }
+      console.log("made map from database if it exsits");     
+    }
+  });
+}
+
 var MapBuilder = function ($container, params) {
   // TODO: Initialize MapBuilder parameters
   this.$elem = $container;
@@ -39,16 +73,7 @@ MapBuilder.prototype.setupPalette = function () {
 
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
-  // draws a 15x30 map of grass onto the canvas
-  // for (var i = 0; i < this.height; i++) {
-  //   $('.map').append($('<div class = "row"> </div>'));
-  // }
-  // var rowlist = document.getElementsByClassName("row");
-  // for (var i = 0; i < rowlist.length; i++) {
-  //   for (var j = 0; j < this.width; j++) {
-  //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
-  //   }
-  // }
+  drawMapAjax();
 
   var updateMap = function () {
     var list = $('.map').classList;
