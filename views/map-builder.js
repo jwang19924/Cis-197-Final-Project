@@ -74,7 +74,16 @@ MapBuilder.prototype.setupPalette = function () {
 
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
-  drawMapAjax();
+  //drawMapAjax();
+  for (var i = 0; i < 15; i++) {
+          $('.map').append($('<div class = "row"> </div>'));
+        }
+        var rowlist = document.getElementsByClassName("row");
+        for (var i = 0; i < rowlist.length; i++) {
+          for (var j = 0; j < 30; j++) {
+            $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+          }
+        }
 
   var updateMap = function () {
     var list = $('.map').classList;
