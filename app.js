@@ -99,8 +99,8 @@ app.post('/protected/:className/index', function (req, res) {
     });
     res.send('Map has been saved!');
   } else {
+    console.log('from express: user namer is' + req.body.currentUser);
     Maps.getMap(req.body.currentUser, function (err, mapdata) {
-      console.log(err);
       console.log("from express: " + mapdata);
       res.send(mapdata);
     });
