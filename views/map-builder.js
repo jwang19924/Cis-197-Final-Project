@@ -17,7 +17,8 @@ var drawMapAjax = function () {
     url: '/protected/:className/index',
     data: { mapstring : null, currentUser: username },
     success: function(data) {
-      console.log('date is: ' + data);
+      console.log('data is: ' + data);
+      console.log('user name is: ' + username);
 
       if (data) {
         var x = 0;
