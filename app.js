@@ -75,7 +75,7 @@ app.get('/protected', function(req, res) {
 });
 
 app.post('/protected', function(req, res) {
-  app.redirect('index', { username: req.body.friendname});
+  res.redirect('index', { username: req.body.friendname});
 });
 
 app.get('/protected/:className/index', function (req, res) {
