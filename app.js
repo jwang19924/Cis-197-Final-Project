@@ -101,7 +101,8 @@ app.post('/protected/:className/index', function (req, res) {
 
 app.post('/getmapdata', function (req, res) { 
   Maps.getMap(req.body.className, function (err, mapdata) {
-      res.send(mapdata);
+    console.log(err);
+    res.send(mapdata);
   });
 });
 
