@@ -16,6 +16,8 @@ var drawMapAjax = function () {
     url: '/protected/:className/index',
     data: { mapstring : null },
     success: function(data) {
+      console.log('date is: ' + data);
+
       if (data) {
         var x = 0;
         for (var i = 0; i < 15; i++) {
@@ -117,36 +119,36 @@ MapBuilder.prototype.setupMapCanvas = function () {
   // }
   drawMapAjax();
 
-  $('.tile').mouseenter(function () {
-    var list = (this).classList;
-    tile = list[2];
-    $(this).removeClass(list[2]);
-    $(this).addClass('tile ' + current);
-    repaint = true;
-    if (mousedown) {
-      repaint = false;
-    }
-  });
+  // $('.tile').mouseenter(function () {
+  //   var list = (this).classList;
+  //   tile = list[2];
+  //   $(this).removeClass(list[2]);
+  //   $(this).addClass('tile ' + current);
+  //   repaint = true;
+  //   if (mousedown) {
+  //     repaint = false;
+  //   }
+  // });
 
-  $('.tile').mouseout(function () {
-    if (repaint) {
-      var list = (this).classList;
-      $(this).removeClass(list[2]);
-      $(this).addClass('tile ' + tile);
-    }
-  });
+  // $('.tile').mouseout(function () {
+  //   if (repaint) {
+  //     var list = (this).classList;
+  //     $(this).removeClass(list[2]);
+  //     $(this).addClass('tile ' + tile);
+  //   }
+  // });
 
-  $('.tile').mousedown(function () {
-    var list = (this).classList;
-    $(this).removeClass(list[2]);
-    $(this).addClass('tile ' + current);
-    repaint = false;
-    mousedown = true;
-  });
+  // $('.tile').mousedown(function () {
+  //   var list = (this).classList;
+  //   $(this).removeClass(list[2]);
+  //   $(this).addClass('tile ' + current);
+  //   repaint = false;
+  //   mousedown = true;
+  // });
 
-  $('.tile').mouseup(function () {
-    mousedown = false;
-  });
+  // $('.tile').mouseup(function () {
+  //   mousedown = false;
+  // });
 
   $('.save').mouseup(function () {
     var list = document.getElementsByClassName("tile");
