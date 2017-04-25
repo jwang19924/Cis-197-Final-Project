@@ -86,9 +86,9 @@ app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
 
   if (!mapstring) {
-    res.send(Maps.getMap(req.params.className, function(err) {
-      next(err);
-    }));
+    Maps.getMap(req.body.className, function (err, mapdata) {
+      res.send(mapdata);
+    });
   }
 
   // var array = mapstring.split("|");
