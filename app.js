@@ -101,6 +101,7 @@ app.post('/protected/:className/index', function (req, res) {
   } else {
     Maps.getMap(req.body.currentUser, function (err, mapdata) {
       console.log(err);
+      console.log("from express: " + mapdata);
       res.send(mapdata);
     });
   }
