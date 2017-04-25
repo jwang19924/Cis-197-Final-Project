@@ -14,7 +14,7 @@ $(document).ready(function () {
 var drawMapAjax = function () {
   $.ajax({
     type: 'POST',
-    url: '/getmapda',
+    url: '/getmapdata',
     data: { mapstring : null },
     success: function(data) {
         $('.map').clear();
