@@ -9,12 +9,13 @@ var tile = '';
 var repaint = false;
 var mousedown = false;
 var current_map = [];
+var username = null;
 
 var drawMapAjax = function () {
   $.ajax({
     type: 'POST',
     url: '/protected/:className/index',
-    data: { mapstring : null },
+    data: { mapstring : null, currentUser: username },
     success: function(data) {
       console.log('date is: ' + data);
 
@@ -117,6 +118,7 @@ MapBuilder.prototype.setupMapCanvas = function () {
   //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
   //   }
   // }
+  username = $("h1").text();
   drawMapAjax();
 
   // $('.tile').mouseenter(function () {

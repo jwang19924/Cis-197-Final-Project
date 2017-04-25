@@ -78,7 +78,7 @@ app.get('/protected/:className/index', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
   } else {
-    res.render('index');
+    res.render('index', { username: req.params.className });
   }
 });
 
@@ -99,7 +99,7 @@ app.post('/protected/:className/index', function (req, res) {
     });
     res.send('Map has been saved!');
   } else {
-    Maps.getMap(req.params.className, function (err, mapdata) {
+    Maps.getMap(req.body.currentUser, function (err, mapdata) {
       console.log(err);
       res.send(mapdata);
     });
