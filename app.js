@@ -102,7 +102,6 @@ app.post('/protected/:className/index', function (req, res) {
   //     });
   //   }
   // });
-  res.send('Map has been saved!');
 });
 
 app.set('port', process.env.PORT || 3000);
