@@ -13,10 +13,9 @@ var current_map = [];
 var drawMapAjax = function () {
   $.ajax({
     type: 'POST',
-    url: '/protected/:className/index',
+    url: '/getmapdata',
     data: { mapstring : null },
     success: function(data) {
-      $('.map').empty();
       if (data) {
         var x = 0;
         for (var i = 0; i < 15; i++) {

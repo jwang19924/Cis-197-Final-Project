@@ -86,13 +86,10 @@ app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
 
   if (!mapstring) {
-    console.log("reacehd correct branch");
     Maps.getMap(req.body.className, function (err, mapdata) {
-      console.log('mapdata: '+ mapdata);
       res.send(mapdata);
     });
   } else {
-    console.log('reached');
     var array = mapstring.split("|");
     Maps.addMap(req.params.className, array, function(err) {
       if (err) {
