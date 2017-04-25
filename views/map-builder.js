@@ -13,7 +13,7 @@ var current_map = [];
 var drawMapAjax = function () {
   $.ajax({
     type: 'POST',
-    url: '/getmapda',
+    url: '/protected/:className/index',
     data: { mapstring : null },
     success: function(data) {
       if (data) {

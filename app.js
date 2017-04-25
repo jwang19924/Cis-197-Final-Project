@@ -84,27 +84,29 @@ app.get('/protected/:className/index', function (req, res) {
 
 app.post('/protected/:className/index', function (req, res) {
   var mapstring = req.body.mapstring;
-  var array = mapstring.split("|");
-  Maps.addMap(req.params.className, array, function(err) {
-    if (err) {
-      // map already exits 
-      Maps.rewriteMap(req.params.className, array, function(err) {
-        if (err) {
-          next(err);
-        }
-      });
-    }
-  });
-  
-  res.send('Map has been saved!');
+
+  if (mapstring) {
+    var array = mapstring.split("|");
+    Maps.addMap(req.params.className, array, function(err) {
+      if (err) {
+        // map already exits 
+        Maps.rewriteMap(req.params.className, array, function(err) {
+          if (err) {
+            next(err);
+          }
+        });
+      }
+    });
+    res.send('Map has been saved!');
+  } else {
+    Maps.getMap(req.body.className, function (err, mapdata) {
+      console.log(err);
+      res.send(mapdata);
+    });
+  }
 });
 
-app.post('/getmapdata', function (req, res) { 
-  Maps.getMap(req.body.className, function (err, mapdata) {
-    console.log(err);
-    res.send(mapdata);
-  });
-});
+
 
 app.set('port', process.env.PORT || 3000);
 
