@@ -10,40 +10,6 @@ var repaint = false;
 var mousedown = false;
 var current_map = [];
 
-var drawMapAjax = function () {
-  $.ajax({
-    type: 'POST',
-    url: '/getmapdata',
-    data: { mapstring : null },
-    success: function(data) {
-      if (data) {
-        var x = 0;
-        for (var i = 0; i < 15; i++) {
-          $('.map').append($('<div class = "row"> </div>'));
-        }
-        var rowlist = document.getElementsByClassName("row");
-        for (var i = 0; i < rowlist.length; i++) {
-          for (var j = 0; j < 30; j++) {
-            $(rowlist[i]).append($('<div class = "tile swatch ' + data[x] + '"> </div>'));
-            x = x + 1;
-          }
-        }
-        console.log('map from database');
-      } else {
-        for (var i = 0; i < 15; i++) {
-          $('.map').append($('<div class = "row"> </div>'));
-        }
-        var rowlist = document.getElementsByClassName("row");
-        for (var i = 0; i < rowlist.length; i++) {
-          for (var j = 0; j < 30; j++) {
-            $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
-          }
-        }
-        console.log('base map');
-      }    
-    }
-  });
-}
 
 var MapBuilder = function ($container, params) {
   // TODO: Initialize MapBuilder parameters
@@ -74,16 +40,15 @@ MapBuilder.prototype.setupPalette = function () {
 
 // TODO: Implement MapBuilder.setupMapCanvas
 MapBuilder.prototype.setupMapCanvas = function () {
-  // for (var i = 0; i < 15; i++) {
-  //   $('.map').append($('<div class = "row"> </div>'));
-  // }
-  // var rowlist = document.getElementsByClassName("row");
-  // for (var i = 0; i < rowlist.length; i++) {
-  //   for (var j = 0; j < 30; j++) {
-  //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
-  //   }
-  // }
-  drawMapAjax();
+  for (var i = 0; i < 15; i++) {
+    $('.map').append($('<div class = "row"> </div>'));
+  }
+  var rowlist = document.getElementsByClassName("row");
+  for (var i = 0; i < rowlist.length; i++) {
+    for (var j = 0; j < 30; j++) {
+      $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
+    }
+  }
 
   var updateMap = function () {
     var list = $('.map').classList;
@@ -134,4 +99,7 @@ MapBuilder.prototype.setupMapCanvas = function () {
   });
 
 }
+
+
+
 //
