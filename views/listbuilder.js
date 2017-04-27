@@ -39,8 +39,10 @@ $(document).ready(function () {
   setupLists(res);
   console.log(res);
 
-  $('.save').mouseup(function () {
+  $('.save').mouseup(function (event) {
+    event.preventDefault();
     document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + res;
+    setupLists(res);
   });
 
   $('.findfriendbutton').mouseup(function (event) {

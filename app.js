@@ -83,12 +83,18 @@ app.post('/protected', function(req, res) {
   if (req.body.newmapname) {
     var newusermapstring = req.body.newmapname.split("|");
     console.log(newusermapstring);
+    if (!newusermapstring[1]) {
+      res.send(null);
+    } 
     User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
       console.log(err);
     });
     res.send('Created a new map!');
   }
   if (req.body.friendlist) {
+    if (!req.body.friendlist) {
+      res.send(null);
+    }
     User.getMapNames(req.body.friendlist, function(err, nameofmaps) {
       res.send(nameofmaps);
     });
