@@ -85,9 +85,15 @@ app.post('/protected', function(req, res) {
   }
   if (req.body.newmapname) {
     var newusermapstring = req.body.newmapname.split("|");
-    User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
-      if (err) {
-        next(err);
+    Maps.getMap(req.body.currentUser, function (err, mapdata) {
+      if (mapdata) {
+        next('A map with the name already exists, please choose a new name');
+      } else {
+        User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
+          if (err) {
+            next(err);
+          }
+        });
       }
     });
     res.send('Created a new map!');
