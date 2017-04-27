@@ -86,7 +86,7 @@ app.post('/protected', function(req, res) {
   if (req.body.newmapname) {
     var newusermapstring = req.body.newmapname.split("|");
     User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
-      res.render('protected', { username: req.session.username });
+      res.render('protected', { username: newusermapstring[1] });
     })
   }
 });
