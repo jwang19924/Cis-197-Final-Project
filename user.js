@@ -54,6 +54,9 @@ userSchema.statics.addMap = function(username, mapname, cb) {
     if (user) {
       var maps = user.mapnames;
       maps.push(mapname);
+      maps = maps.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+      });
       user.save(function(err) {
         if (err) { return next(err); }
       });

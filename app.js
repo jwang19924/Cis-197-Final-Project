@@ -91,9 +91,7 @@ app.post('/protected', function(req, res) {
       res.send(null);
     }
     User.getMapNames(req.body.friendlist, function(err, nameofmaps) {
-      res.send(nameofmaps.filter(function(elem, index, self) {
-        return index == self.indexOf(elem);
-      }));
+      res.send(nameofmaps);
     });
   }
 });
