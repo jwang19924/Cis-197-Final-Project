@@ -1,3 +1,13 @@
+var updatemapname = function(mapname, username) {
+  $.ajax({
+    type: 'POST',
+    url: '/protected',
+    data: { newmapname: mapname, userToAddMap: username },
+    success: function(data) {
+    }
+  });
+}
+
 var setupLists = function(username) {
   $.ajax({
     type: 'POST',
@@ -45,7 +55,7 @@ $(document).ready(function () {
 
   $('.save').mouseup(function (event) {
     event.preventDefault();
-    document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + res;
+    updatemapname(document.getElementById("newmap").value, res);
     setupLists(res);
   });
 
