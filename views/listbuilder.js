@@ -44,7 +44,7 @@ $(document).ready(function () {
   });
 
   $('.findfriendbutton').mouseup(function (event) {
-    event.preventDefault()
-    setupFriendsList(document.getElementById("findfriend").value)
+    event.preventDefault();
+    setupFriendsList(document.getElementById("findfriend").value);
   });
 });
