@@ -85,7 +85,7 @@ app.post('/protected', function(req, res) {
   }
   if (req.body.newmapname) {
     User.addMap(req.session.username, req.body.newmapname, function (err) {
-      res.send(err);
+      res.render('protected', { username: req.session.username });
     })
   }
 });
