@@ -1,7 +1,7 @@
 var setupLists = function(username) {
   $.ajax({
     type: 'POST',
-    url: '/protected/:className/index',
+    url: '/protected',
     data: { user: username },
     success: function(data) {
       console.log(data);
