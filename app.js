@@ -85,22 +85,16 @@ app.post('/protected', function(req, res) {
   }
   if (req.body.newmapname) {
     var newusermapstring = req.body.newmapname.split("|");
-    Maps.getMap(req.body.currentUser, function (err, mapdata) {
-      if (mapdata) {
-        next('A map with the name already exists, please choose a new name');
-      } else {
-        User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
-          if (err) {
-            next(err);
-          }
-        });
+    User.addMap(newusermapstring[1], newusermapstring[0], function (err) {
+      if (err) {
+        next(err);
       }
     });
     res.send('Created a new map!');
   }
 });
 
-app.get('/protected/:className/index', function (req, res) {
+app.get('/protected/:username/:className/index', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
   } else {
