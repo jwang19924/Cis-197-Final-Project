@@ -9,6 +9,7 @@ var setupLists = function(username) {
       for (var i = 0; i < data.length; i++) {
         $('.maps').append($('<div> <a href="/protected/' + username + data[i] + '/index">' + data[i] + '</a></div>'));
       }
+      $('.save').val('');
     }
   });
 }
