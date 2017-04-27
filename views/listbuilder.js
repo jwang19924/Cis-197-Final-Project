@@ -16,4 +16,8 @@ $(document).ready(function () {
   var res = user.substring(9, user.length);
   setupLists(user);
 
+  $('.save').mouseup(function () {
+    document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + user;
+  });
+
 });
