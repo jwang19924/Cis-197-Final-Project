@@ -6,7 +6,7 @@ var setupLists = function(username) {
     success: function(data) {
       console.log(data);
       for (var i = 0; i < data.length; i++) {
-        $('.maps').append($('<a href="/protected/' + data[i] + 'index">Your Map!</a>'));
+        $('.maps').append($('<a href="/protected/' + data[i] + '/index">' + data[i] + '</a>'));
       }
     }
   });
