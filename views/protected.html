@@ -1,14 +1,19 @@
 
 <body>
 	<h1>Welcome, <%= username %></h1>
-	<h2> Your Maps! </h2>
+	<h2>To create a new map, enter a new map name below:</h2>
+	<form method="post">
+	      <input  type="text" name="newmapname"></p>
+	      <p><input class = "save" type="submit"></p>
+	</form>
+	<h3> Your Maps! </h3>
 
 	<div>
 		<div class = "maps">
 			<a href="/protected/<%= username %>/index">Your Map!</a>
 		</div>
 
-		<h3> Find Friend's Map </h3>
+		<h4> Find Friend's Map </h4>
 
 		<form method="post">
 	      <input  type="text" name="friendname"></p>

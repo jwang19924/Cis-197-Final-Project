@@ -83,6 +83,11 @@ app.post('/protected', function(req, res) {
       res.send(nameofmaps);
     });
   }
+  if (req.body.newmapname) {
+    User.addMap(req.session.username, req.body.newmapname, function (err) {
+      res.send(err);
+    })
+  }
 });
 
 app.get('/protected/:className/index', function (req, res) {
