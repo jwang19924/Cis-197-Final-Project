@@ -1,16 +1,28 @@
 
-<h1>Welcome, <%= username %></h1>
-<div>
-<div>
-<a href="/protected/<%= username %>/index">Your Map!</a>
-</div>
-<div>
-	<h3> Find Friend's Map </h3>
-	<form method="post">
-      <input  type="text" name="friendname"></p>
-      <p><input class = "save" type="submit"></p>
-    </form>
-</div>
-<div>
-<a href="/logout">Logout</a>
-</div>
+<body>
+	<h1>Welcome, <%= username %></h1>
+	<h2> Your Maps! </h2>
+
+	<div>
+		<div class = "maps">
+			<a href="/protected/<%= username %>/index">Your Map!</a>
+		</div>
+
+		<h3> Find Friend's Map </h3>
+
+		<form method="post">
+	      <input  type="text" name="friendname"></p>
+	      <p><input class = "save" type="submit"></p>
+	    </form>
+	</div>
+
+
+	<div>
+	<a href="/logout">Logout</a>
+	</div>
+
+	<!-- load scripts -->
+    <script src="/lib/js/jquery-1.11.1.js"></script>
+    <script src="/listbuilder.js"></script>
+
+</body>
