@@ -75,7 +75,14 @@ app.get('/protected', function(req, res) {
 });
 
 app.post('/protected', function(req, res) {
-  res.redirect('protected/' + req.body.friendname + '/index');
+  if (req.body.friendname) {
+    res.redirect('protected/' + req.body.friendname + '/index');
+  }
+  if (req.body.user) {
+    User.getMapNames(req.body.user, function(err, nameofmaps) {
+      res.send(nameofmaps);
+    });
+  }
 });
 
 app.get('/protected/:className/index', function (req, res) {

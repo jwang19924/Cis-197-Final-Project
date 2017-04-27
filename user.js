@@ -43,4 +43,36 @@ userSchema.statics.checkIfLegit = function(username, password, mapnames, cb) {
   });
 }
 
+userSchema.statics.addMap = function(username, mapname, cb) {
+  this.findOne({username: username}, function (err, user) {
+    if (err) {
+      cb(err);
+    }
+    if (!user) { 
+      cb("no user: " + username); 
+    }
+    if (user) {
+      var maps = user.mapnames;
+      maps.push(mapname);
+      user.save(function(err) {
+        if (err) { return next(err); }
+      });
+    }
+  });
+}
+
+userSchema.statics.getMapNames = function(username, cb) {
+  this.findOne({username: username}, function (err, user) {
+    if (err) {
+      cb(err);
+    }
+    if (!user) { 
+      cb("no user: " + username); 
+    }
+    if (user) {
+      cb(null, user.mapnames);
+    }
+  });
+}
+
 module.exports = mongoose.model('User', userSchema);
