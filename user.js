@@ -49,7 +49,7 @@ userSchema.statics.addMap = function(username, mapname, cb) {
       cb(err);
     }
     if (!user) { 
-      cb("no user: " + username); 
+      cb('no user: ' + username); 
     }
     if (user) {
       var maps = user.mapnames;
@@ -70,7 +70,7 @@ userSchema.statics.getMapNames = function(username, cb) {
       cb(err);
     }
     if (!user) { 
-      cb("no user: " + username); 
+      cb('no user: ' + username); 
     }
     if (user) {
       cb(null, user.mapnames);
