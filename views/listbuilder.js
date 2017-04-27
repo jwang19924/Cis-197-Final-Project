@@ -14,10 +14,10 @@ var setupLists = function(username) {
 $(document).ready(function () {
   var user = $("h1").text();
   var res = user.substring(9, user.length);
-  setupLists(user);
+  setupLists(res);
 
   $('.save').mouseup(function () {
-    document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + user;
+    document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + res;
   });
 
 });
