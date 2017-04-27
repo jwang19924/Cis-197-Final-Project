@@ -39,6 +39,9 @@ $(document).ready(function () {
   setupLists(res);
   console.log(res);
 
+  $('.save').bind('click', function(e){e.preventDefault()});
+  $('.findfriendbutton').bind('click', function(e){e.preventDefault()});
+
   $('.save').mouseup(function (event) {
     event.preventDefault();
     document.getElementById("newmap").value = document.getElementById("newmap").value + '|' + res;
