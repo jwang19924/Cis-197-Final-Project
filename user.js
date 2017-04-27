@@ -53,11 +53,10 @@ userSchema.statics.addMap = function(username, mapname, cb) {
     }
     if (user) {
       var maps = user.mapnames;
-      maps.push(mapname);
-      var uniquearray = maps.filter(function(elem, pos) {
-        return maps.indexOf(elem) == pos;
-      });
-      maps = uniquearray;
+      if (!(maps.includes(mapname))) {
+        maps.push(mapname);
+      }
+      
       user.save(function(err) {
         if (err) { return next(err); }
       });
