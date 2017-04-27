@@ -75,9 +75,6 @@ app.get('/protected', function(req, res) {
 });
 
 app.post('/protected', function(req, res) {
-  if (req.body.friendname) {
-    res.redirect('protected/' + req.body.friendname + '/index');
-  }
   if (req.body.user) {
     User.getMapNames(req.body.user, function(err, nameofmaps) {
       res.send(nameofmaps);
@@ -90,6 +87,11 @@ app.post('/protected', function(req, res) {
       console.log(err);
     });
     res.send('Created a new map!');
+  }
+  if (req.body.friendlist) {
+    User.getMapNames(req.body.friendlist, function(err, nameofmaps) {
+      res.send(nameofmaps);
+    });
   }
 });
 

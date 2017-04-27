@@ -10,14 +10,18 @@
 
 	<div>
 		<div class = "maps">
+			<!-- ajax to load your maps go here -->
 		</div>
 
-		<h4> Find Friend's Map </h4>
-
+		<h4> Find Friend's Map!</h4>
+		<h4> use the following format: friendname/mapname</h4>
 		<form method="post">
-	      <input  type="text" name="friendname"></p>
-	      <p><input type="submit"></p>
+	      <input  type="text" id = "findfriend" name="friendname"></p>
+	      <p><input class = "findfriendbutton" type="submit"></p>
 	    </form>
+	    <div class = "friendmaps">
+	    	<!-- ajax to load friend maps go here -->
+	    </div>
 	</div>
 
 
