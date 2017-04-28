@@ -9,6 +9,6 @@ $(document).ready(function () {
   builder.setupMapCanvas();
   var pikachu = new Player(0, 0, builder);
   $("#ImageHosting").click(function () {
-    alert("How to build a map: \n 1. Pick a swatch from the palette \n 2. Hover over the map canvas to see swatch in context \n 3. Click on the canvas to paint it with a selected swatch \n 4. Use the arrow keys to navigate Pikachu around the map.");
+    alert("Instructions: \n \n 1. Pick a swatch from the palette \n 2. Hover over the map canvas to see swatch in context \n 3. Click on the canvas to paint it with a selected swatch \n 4. Use the arrow keys to navigate Pikachu around the map.");
   });
 });
