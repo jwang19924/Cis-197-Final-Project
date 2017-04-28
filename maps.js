@@ -7,35 +7,37 @@ var mapSchema = new Schema({
   mapdata: { type: [], required: true }
 });
 
-mapSchema.statics.addMap = function(mapname, mapdata, cb) {
+mapSchema.statics.addMap = function (mapname, mapdata, cb) {
   var newMap = new this({ mapname: mapname, mapdata: mapdata});
   newMap.save(cb);
-}
+};
 
-mapSchema.statics.rewriteMap = function(mapname, mapdata, cb) {
-  this.findOne({ mapname: mapname }, function(err, map) {
+mapSchema.statics.rewriteMap = function (mapname, mapdata, cb) {
+  this.findOne({ mapname: mapname }, function (err, map) {
     if (!map) cb('no map');
     else {
       map.mapdata = mapdata;
-      map.save(function(err) {
-        if (err) { return next(err); }
+      map.save (function (err) {
+        if (err) { 
+          cb(err);
+        }
       });
-    };
+    }
   });
-}
+};
 
-mapSchema.statics.getMap = function(mapname, cb) {
+mapSchema.statics.getMap = function (mapname, cb) {
   this.findOne({mapname: mapname}, function (err, map) {
     if (err) {
       cb(err);
     }
     if (!map) { 
-      cb("no map data" + mapname); 
+      cb('no map data' + mapname); 
     }
     if (map) {
       cb(null, map.mapdata);
     }
   });
-}
+};
 
 module.exports = mongoose.model('Maps', mapSchema);
