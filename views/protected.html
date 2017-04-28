@@ -2,10 +2,10 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="/login.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 
-<div class "login-page">
+<body>
   <div class = "form">
 		<h2>Welcome, <%= username %></h2>
 		<h3>To create a new map, enter a new map name below:</h3>
@@ -19,18 +19,17 @@
 		<div class = "maps">
 		  <!-- ajax to load your maps go here -->
 		</div>
-		
+
 		<div>
 		<p class="message"> Click here to logout.
 			<a href="/login">Logout</a>
 		</p>
 		</div>
   </div>
-</div>
 
-<div class = "form">
+  <div class = "form">
 		<h2> Find Your Friend's Maps!</h2>
-		<h3> To find your friends' map, type their user name below: </h3>
+		<h3> To find your friends' map, type their username below: </h3>
 		<form method="post">
 		    <input  type="text" id = "findfriend" name="friendname"></p>
 		    <!-- <p><input class = "findfriendbutton" type="submit"></p> -->
@@ -44,7 +43,8 @@
 		<!-- load scripts -->
 	    <script src="/lib/js/jquery-1.11.1.js"></script>
 	    <script src="/listbuilder.js"></script>
-
   </div>
+</body>
+
 
 </html>
