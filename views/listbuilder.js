@@ -1,19 +1,19 @@
-var updatemapname = function(mapname, username) {
+var updatemapname = function (mapname, username) {
   $.ajax({
     type: 'POST',
     url: '/protected',
     data: { newmapname: mapname, userToAddMap: username },
-    success: function(data) {
+    success: function (data) {
     }
   });
-}
+};
 
-var setupLists = function(username) {
+var setupLists = function (username) {
   $.ajax({
     type: 'POST',
     url: '/protected',
     data: { user: username },
-    success: function(data) {
+    success: function (data) {
       console.log(data);
       $('.maps').empty();
       for (var i = 0; i < data.length; i++) {
@@ -21,14 +21,14 @@ var setupLists = function(username) {
       }
     }
   });
-}
+};
 
-var setupFriendsList = function(username) {
+var setupFriendsList = function (username) {
   $.ajax({
     type: 'POST',
     url: '/protected',
     data: { friendlist: username },
-    success: function(data) {
+    success: function (data) {
       console.log(data);
       if (data) {
         $('.friendmaps').empty();
@@ -41,26 +41,31 @@ var setupFriendsList = function(username) {
       }
     }
   });
-}
+};
 
 
 $(document).ready(function () {
-  var user = $("h1").text();
+  var user = $('h1').text();
   var res = user.substring(9, user.length);
   setupLists(res);
   console.log(res);
 
-  $('.save').bind('click', function(e){e.preventDefault()});
-  $('.findfriendbutton').bind('click', function(e){e.preventDefault()});
+  $('.save').bind('click', function (e) {
+    e.preventDefault();
+  });
+
+  $('.findfriendbutton').bind('click', function (e) {
+    e.preventDefault();
+  });
 
   $('.save').mouseup(function (event) {
     event.preventDefault();
-    updatemapname(document.getElementById("newmap").value, res);
+    updatemapname(document.getElementById('newmap').value, res);
     setupLists(res);
   });
 
   $('.findfriendbutton').mouseup(function (event) {
     event.preventDefault();
-    setupFriendsList(document.getElementById("findfriend").value);
+    setupFriendsList(document.getElementById('findfriend').value);
   });
 });
