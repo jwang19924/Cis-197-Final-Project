@@ -57,7 +57,7 @@ app.get('/register', function (req, res) {
 app.post('/register', function (req, res) {
   User.addUser(req.body.username, req.body.password, [], function (err) {
     if (err) res.send('error' + err);
-    else res.send('new user registered with username ' + req.body.username);
+    else res.redirect('/login');
   });
 });
 
