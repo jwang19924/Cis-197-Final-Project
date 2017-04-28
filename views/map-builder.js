@@ -16,7 +16,7 @@ var drawMapAjax = function () {
     type: 'POST',
     url: '/protected/:className/index',
     data: { mapstring : null, currentUser: username },
-    success: function(data) {
+    success: function (data) {
       console.log('data is: ' + data);
       console.log('user name is: ' + username);
 
@@ -25,7 +25,7 @@ var drawMapAjax = function () {
         for (var i = 0; i < 15; i++) {
           $('.map').append($('<div class = "row"> </div>'));
         }
-        var rowlist = document.getElementsByClassName("row");
+        var rowlist = document.getElementsByClassName('row');
         for (var i = 0; i < rowlist.length; i++) {
           for (var j = 0; j < 30; j++) {
             $(rowlist[i]).append($('<div class = "tile swatch ' + data[x] + '"> </div>'));
@@ -37,7 +37,7 @@ var drawMapAjax = function () {
         for (var i = 0; i < 15; i++) {
           $('.map').append($('<div class = "row"> </div>'));
         }
-        var rowlist = document.getElementsByClassName("row");
+        var rowlist = document.getElementsByClassName('row');
         for (var i = 0; i < rowlist.length; i++) {
           for (var j = 0; j < 30; j++) {
             $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
@@ -79,7 +79,7 @@ var drawMapAjax = function () {
 
     }
   });
-}
+};
 
 var MapBuilder = function ($container, params) {
   // TODO: Initialize MapBuilder parameters
@@ -103,7 +103,7 @@ MapBuilder.prototype.setupPalette = function () {
     var $toremove = $('#map-builder').find('.selected');
     $toremove.removeClass('selected');
     $(this).addClass('selected');
-    current = this.classList[1]
+    current = this.classList[1];
     console.log(current);
   });
 };
@@ -119,7 +119,7 @@ MapBuilder.prototype.setupMapCanvas = function () {
   //     $(rowlist[i]).append($('<div class = "tile swatch grass"> </div>'));
   //   }
   // }
-  username = $("h1").text();
+  username = $('h1').text();
   drawMapAjax();
 
   // $('.tile').mouseenter(function () {
@@ -154,17 +154,17 @@ MapBuilder.prototype.setupMapCanvas = function () {
   // });
 
   $('.save').mouseup(function () {
-    var list = document.getElementsByClassName("tile");
-    var string = "";
+    var list = document.getElementsByClassName('tile');
+    var string = '';
     for (var i = 0; i < list.length; i++) {
       current_map[i] = list[i].classList[2];
       var holder = list[i].classList[2];
       string = string.concat(holder);
-      string = string.concat("|");
+      string = string.concat('|');
     }
     console.log(string); 
-    document.getElementById("mapfield").value = string;
+    document.getElementById('mapfield').value = string;
   });
 
-}
+};
 //
