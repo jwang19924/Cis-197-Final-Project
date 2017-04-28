@@ -32,6 +32,7 @@ var setupFriendsList = function (username) {
       console.log(data);
       if (data) {
         $('.friendmaps').empty();
+        $('.friendmaps').append($("<h3> Your Friend's Maps: "));
         for (var i = 0; i < data.length; i++) {
           $('.friendmaps').append($('<div> <a href="/protected/' + username + data[i] + '/index">' + data[i] + '</a></div>'));
         }
