@@ -38,7 +38,7 @@ var setupFriendsList = function (username) {
         }
       } else {
         $('.friendmaps').empty();
-        $('.friendmaps').append($('<h3>No map user with user name: ' + username + ' has been found</h3>'));
+        $('.friendmaps').append($('<h3>No user with username: ' + username + ' has been found</h3>'));
       }
     }
   });
