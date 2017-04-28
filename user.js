@@ -9,15 +9,15 @@ var userSchema = new Schema({
   mapnames: []
 });
 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
   var user = this;
 
   if (!user.isModified('password')) return next();
 
-  bcrypt.genSalt(10, function(err, salt) {
+  bcrypt.genSalt(10, function (err, salt) {
     if (err) return next(err);
 
-    bcrypt.hash(user.password, salt, function(err, hash) {
+    bcrypt.hash(user.password, salt, function (err, hash) {
       if (err) return next(err);
 
       user.password = hash;
@@ -26,24 +26,24 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.statics.addUser = function(username, password, mapnames, cb) {
+userSchema.statics.addUser = function (username, password, mapnames, cb) {
   var newUser = new this({ username: username, password: password, mapnames: mapnames});
   newUser.save(cb);
-}
+};
 
-userSchema.statics.checkIfLegit = function(username, password, mapnames, cb) {
-  this.findOne({ username: username }, function(err, user) {
+userSchema.statics.checkIfLegit = function (username, password, mapnames, cb) {
+  this.findOne({ username: username }, function (err, user) {
     if (!user) cb('no user');
     else {
-      bcrypt.compare(password, user.password, function(err, isRight) {
+      bcrypt.compare(password, user.password, function (err, isRight) {
         if (err) return cb(err);
         cb(null, isRight);
       });
-    };
+    }
   });
-}
+};
 
-userSchema.statics.addMap = function(username, mapname, cb) {
+userSchema.statics.addMap = function (username, mapname, cb) {
   this.findOne({username: username}, function (err, user) {
     if (err) {
       cb(err);
@@ -57,14 +57,14 @@ userSchema.statics.addMap = function(username, mapname, cb) {
         maps.push(mapname);
       }
       
-      user.save(function(err) {
-        if (err) { return next(err); }
+      user.save(function (err) {
+        cb(err);
       });
     }
   });
-}
+};
 
-userSchema.statics.getMapNames = function(username, cb) {
+userSchema.statics.getMapNames = function (username, cb) {
   this.findOne({username: username}, function (err, user) {
     if (err) {
       cb(err);
@@ -76,6 +76,6 @@ userSchema.statics.getMapNames = function(username, cb) {
       cb(null, user.mapnames);
     }
   });
-}
+};
 
 module.exports = mongoose.model('User', userSchema);
