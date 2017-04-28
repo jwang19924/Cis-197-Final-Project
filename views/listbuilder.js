@@ -46,7 +46,7 @@ var setupFriendsList = function (username) {
 
 
 $(document).ready(function () {
-  var user = $('.username').text();
+  var user = $('h1').text();
   var res = user.substring(9, user.length);
   setupLists(res);
   console.log(res);
