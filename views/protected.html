@@ -1,35 +1,49 @@
+<!DOCTYPE html>
 
-<body>
-	<h1>Welcome, <%= username %></h1>
-	<h2>To create a new map, enter a new map name below:</h2>
-	<form method="post">
-	      <input  type="text" id="newmap" name="newmapname"></p>
-	      <p><input class = "save" type="submit"></p>
-	</form>
-	<h3> Your Maps! </h3>
+<html>
+<head>
+  <link rel="stylesheet" href="login.css">
+</head>
 
-	<div>
-		<div class = "maps">
-			<!-- ajax to load your maps go here -->
+<div class "login-page">
+  <div class = "form">
+	<body>
+		<h1>Welcome, <%= username %></h1>
+		<h2>To create a new map, enter a new map name below:</h2>
+		<form method="post">
+		      <input  type="text" id="newmap" name="newmapname"></p>
+		      <!-- <p><input class = "save" type="submit"></p> -->
+		      <button class = "save"> submit </button>
+		</form>
+
+		<h3> Your Maps! </h3>
+		<div>
+		  <div class = "maps">
+		  <!-- ajax to load your maps go here -->
 		</div>
 
 		<h4> Find Friend's Map!</h4>
 		<form method="post">
-	      <input  type="text" id = "findfriend" name="friendname"></p>
-	      <p><input class = "findfriendbutton" type="submit"></p>
-	    </form>
-	    <div class = "friendmaps">
-	    	<!-- ajax to load friend maps go here -->
-	    </div>
-	</div>
+		    <input  type="text" id = "findfriend" name="friendname"></p>
+		    <!-- <p><input class = "findfriendbutton" type="submit"></p> -->
+		    <button class = "findfriendbutton"> submit </button>
+		</form>
 
-	<h4> Click here to logout safely. </h4>
-	<div>
-	<a href="/logout">Logout</a>
-	</div>
+		<div class = "friendmaps">
+			<!-- ajax to load friend maps go here -->
+		</div>
 
-	<!-- load scripts -->
-    <script src="/lib/js/jquery-1.11.1.js"></script>
-    <script src="/listbuilder.js"></script>
+		<h4> Click here to logout safely. </h4>
+		<div>
+		<a href="/logout">Logout</a>
+		</div>
 
-</body>
+		<!-- load scripts -->
+	    <script src="/lib/js/jquery-1.11.1.js"></script>
+	    <script src="/listbuilder.js"></script>
+
+	</body>
+  </div>
+</div>
+
+</html>
