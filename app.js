@@ -56,7 +56,7 @@ app.get('/register', function (req, res) {
 
 app.post('/register', function (req, res) {
   User.addUser(req.body.username, req.body.password, [], function (err) {
-    if (err) res.send('error' + err);
+    if (err) res.send('Username already exists. Please choose a different username.');
     else res.send('Account Creation Successful! New user registered with username ' + req.body.username + '.');
   });
 });
