@@ -47,7 +47,7 @@ var Player = function (x, y, builder) {
   var moveto = function (newx, newy) {
     $pikachu.css('left', newx * SWATCH_SIZE);
     $pikachu.css('top', newy * SWATCH_SIZE);
-  }
+  };
 
   var checksquares = function (xcheck, ycheck) {
     var checker = (ycheck) * (maxwidth + 1) + (xcheck);
@@ -55,7 +55,7 @@ var Player = function (x, y, builder) {
     var swatch = $element.get(0);
     var list = swatch.classList;
     return (isTerrain(list[2]));
-  }
+  };
 
   // 2. Listen to *keydown* events *on the document* to move the player.
   //    Keycodes for [left, up, right, down] are [37, 38, 39, 40], respectively.

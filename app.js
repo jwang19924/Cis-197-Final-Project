@@ -69,7 +69,7 @@ app.get('/logout', function (req, res) {
 app.get('/protected', function (req, res) {
   if (!req.session.username || req.session.username === '') {
     res.send('You tried to access a protected page');
-  }  else {
+  } else {
     res.render('protected', { username: req.session.username });
   }
 });
